@@ -33,6 +33,12 @@ function Page3() {
             <Dropdown.Item onSelect={handleChange} eventKey={"Bank2"}>
               Bank2
             </Dropdown.Item>
+            <Dropdown.Item onSelect={handleChange} eventKey={"Bank3"}>
+              Bank3
+            </Dropdown.Item>
+            <Dropdown.Item onSelect={handleChange} eventKey={"Bank4"}>
+              Bank4
+            </Dropdown.Item>
           </SplitButton>
         </div>
         <h5 className="mb-5">

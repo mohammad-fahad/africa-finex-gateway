@@ -35,7 +35,11 @@ function Page4({ children, ...rest }) {
           <h4>Doubts? Discord or Telegram</h4>
         </a>
         <div className="text-center">
-          <Button variant="danger" className="px-5 mt-5 ">
+          <Button
+            variant="danger"
+            className="px-5 mt-5 "
+            onClick={() => alert("Successfully added")}
+          >
             Next
           </Button>
         </div>

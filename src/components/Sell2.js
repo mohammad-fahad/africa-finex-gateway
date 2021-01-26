@@ -1,22 +1,21 @@
 import React, { useContext } from "react";
-
 import { Button } from "react-bootstrap";
 import WAValidator from "wallet-address-validator";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../App";
 
-const Page2 = () => {
+function Sell2() {
   const [wallet, setWallet] = useState("");
-  const { finalWallet, setFinalWallet } = useContext(UserContext);
+  const { finalWalletSell, setFinalWalletSell } = useContext(UserContext);
   let history = useHistory();
 
   const isValid = () => {
     const valid = WAValidator.validate(wallet, "BTC");
     if (valid) {
       alert("This is a valid address");
-      history.push("/page3");
-      setFinalWallet(wallet);
+      history.push("/sell3");
+      setFinalWalletSell(wallet);
     } else {
       alert("Address INVALID");
     }
@@ -29,13 +28,14 @@ const Page2 = () => {
           onBlur={(e) => setWallet(e.target.value)}
           className="form-control mb-5"
           type="text"
-          placeholder="Enter your BSC wallet address"
+          placeholder="BSC wallet address"
         />
-        <h4>You will receive your TAOA in this address</h4>
 
-        <h4 className="text-danger mt-5">
-          Pay close attention mistakes will make you loose all your assets and
-          there is nothing we can do to help
+        <h4 className="mt-5">
+          If for some reason we can not proceed with your sale (Which is rare)
+          we will completely return your assets. Please provide a BSC valid
+          wallet address that you have access to. Pay close attention to not
+          input any incorrect information.
         </h4>
       </div>
       <a
@@ -52,5 +52,6 @@ const Page2 = () => {
       </div>
     </div>
   );
-};
-export default Page2;
+}
+
+export default Sell2;
