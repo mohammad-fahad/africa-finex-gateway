@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { UserContext } from "../App";
 
 function Sell3() {
   let history = useHistory();
+  const { account, setAccount } = useContext(UserContext);
   return (
     <div className="container border my-5">
       <div className="container p-5">
@@ -11,6 +13,7 @@ function Sell3() {
           type="text"
           className="form-control"
           placeholder="Enter Your IBAN account details to be credited"
+          onBlur={(e) => setAccount(e.target.value)}
         />
         <div className="mt-5">
           <a href="#">

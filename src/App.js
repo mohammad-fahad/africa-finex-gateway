@@ -16,6 +16,8 @@ function App() {
   const [country, setCountry] = useState(null);
   const [finalWallet, setFinalWallet] = useState("");
   const [finalWalletSell, setFinalWalletSell] = useState("");
+  const [token, setToken] = useState("");
+  const [account, setAccount] = useState("");
   
   return (
     <UserContext.Provider
@@ -26,6 +28,10 @@ function App() {
         setFinalWallet,
         finalWalletSell,
         setFinalWalletSell,
+        token,
+        setToken,
+        account,
+        setAccount,
       }}
     >
       <Router>

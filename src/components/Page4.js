@@ -7,16 +7,23 @@ function Page4({ children, ...rest }) {
   const [htmlId] = useId();
   const { finalWallet, setFinalWallet } = useContext(UserContext);
 
-  //  would fetch my post this way... As I don't have the Bank API so I couldn't do it.
-  // const postSell = () => {
-  //     fetch("https://salty-earth-57944.herokuapp.com/buy", {
-  //       method: "POST",
-  //       body: JSON.stringify(),
-  //       headers: {
-  //         "Content-type": "application/json; charset=UTF-8",
-  //       },
-  //     });
-  // };
+  const postBuy = () => {
+    const bulkData = { finalWallet, SwapId: htmlId, IBAN: "ABCDEFG1234567" };
+
+    fetch("https://salty-earth-57944.herokuapp.com/buy", {
+      method: "POST",
+      body: JSON.stringify(bulkData),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          alert("Successfully posted");
+        }
+      });
+  };
 
   return (
     <div className="container border my-5">
@@ -35,11 +42,7 @@ function Page4({ children, ...rest }) {
           <h4>Doubts? Discord or Telegram</h4>
         </a>
         <div className="text-center">
-          <Button
-            variant="danger"
-            className="px-5 mt-5 "
-            onClick={() => alert("Successfully added")}
-          >
+          <Button variant="danger" className="px-5 mt-5 " onClick={postBuy}>
             Next
           </Button>
         </div>

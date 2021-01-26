@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   DropdownButton,
   ButtonGroup,
@@ -7,9 +7,10 @@ import {
   Button,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { UserContext } from "../App";
 
 function Sell() {
-  const [token, setToken] = useState("");
+  const { token, setToken } = useContext(UserContext);
   const handleChange = (e) => {
     setToken(e);
   };
