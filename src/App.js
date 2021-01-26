@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import FirstPage from "./components/FirstPage";
+import Page2 from "./components/Page2";
+import Page3 from "./components/Page3";
+import Page4 from "./components/Page4";
 
+
+export const UserContext = createContext();
 function App() {
+  const [country, setCountry] = useState(null);
+  const [finalWallet, setFinalWallet] = useState("");
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider
+      value={{ country, setCountry, finalWallet, setFinalWallet }}
+    >
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <FirstPage />
+          </Route>
+          <Route path="/firstPage">
+            <FirstPage />
+          </Route>
+          <Route path="/page2">
+            <Page2 />
+          </Route>
+          <Route path="/page3">
+            <Page3 />
+          </Route>
+          <Route path="/Page4">
+            <Page4 />
+          </Route>
+        </Switch>
+      </Router>
+    </UserContext.Provider>
   );
 }
 
