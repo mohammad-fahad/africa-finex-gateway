@@ -24,6 +24,7 @@ function Sell() {
           drop={"down"}
           variant="secondary"
           title={token || "Choose a token"}
+          className="my-5"
         >
           <Dropdown.Item onSelect={handleChange} eventKey={"token1"}>
             token1
@@ -44,7 +45,7 @@ function Sell() {
           <h3>You will get X AOA @Preco AOA/TAOA</h3>
         </div>
         <Link to="/sell2">
-          <Button variant="danger" className="px-5 mt-5 text-center">
+          <Button variant="danger" className="px-5 my-5 text-center">
             Next
           </Button>
         </Link>

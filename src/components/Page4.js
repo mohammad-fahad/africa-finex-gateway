@@ -2,10 +2,12 @@ import React, { useContext, useEffect } from "react";
 import { useId } from "react-id-generator";
 import { UserContext } from "../App";
 import { Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 function Page4({ children, ...rest }) {
   const [htmlId] = useId();
   const { finalWallet, setFinalWallet } = useContext(UserContext);
+  const history = useHistory();
 
   const postBuy = () => {
     const bulkData = { finalWallet, SwapId: htmlId, IBAN: "ABCDEFG1234567" };
@@ -21,6 +23,7 @@ function Page4({ children, ...rest }) {
       .then((data) => {
         if (data) {
           alert("Successfully posted");
+          history.push("/sell");
         }
       });
   };
